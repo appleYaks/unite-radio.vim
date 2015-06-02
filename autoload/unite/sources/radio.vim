@@ -63,6 +63,11 @@ let s:source = {
         call unite#sources#radio#play(a:candidate.url, a:candidate.cmd)
     endfunction "}}}
 
+    let s:source.action_table.stop = {'description' : 'stop radio'}
+    fun! s:source.action_table.stop.func(candidate) "{{{
+        call unite#sources#radio#stop()
+    endfunction "}}}
+
     fun! s:source.hooks.on_syntax(args, context) "{{{
         call s:hl_current()
     endfunction "}}}

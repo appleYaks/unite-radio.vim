@@ -105,7 +105,7 @@ if !s:play_cmd
 endif
 
 fun! unite#sources#radio#play(url, cmd) "{{{
-    if ! (a:url =~ '(pls|m3u|asx)')
+    if a:url !~? 'pls' && a:url !~? 'm3u' && a:url !~? 'asx'
         let s:play_cmd = "mplayer -quiet"
     endif
 

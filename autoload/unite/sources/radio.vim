@@ -100,8 +100,8 @@ command! MStop call unite#sources#radio#stop()
 if !s:play_cmd
     if executable('/Applications/VLC.app/Contents/MacOS/VLC')
         let s:play_cmd = '/Applications/VLC.app/Contents/MacOS/VLC -Irc --quiet'
-    elseif executable('mplayer')
-        let s:play_cmd = 'mplayer -quiet -playlist'
+    elseif executable('mpv')
+        let s:play_cmd = 'mpv --really-quiet'
     elseif executable('cvlc')
         let s:play_cmd = 'cvlc -Irc --quiet'
     else
@@ -110,10 +110,6 @@ if !s:play_cmd
 endif
 
 fun! unite#sources#radio#play(url, cmd) "{{{
-    if a:url !~? 'pls' && a:url !~? 'm3u' && a:url !~? 'asx'
-        let s:play_cmd = "mplayer -quiet"
-    endif
-
     if a:cmd != ''
         let s:play_cmd = a:cmd
     endif
